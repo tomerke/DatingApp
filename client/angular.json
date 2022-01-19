@@ -23,6 +23,11 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
+=======
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+>>>>>>> 9dab8948417adb7099fcfff67c50022f7bd167f6
               "src/styles.css"
             ],
             "scripts": []
@@ -62,6 +67,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+<<<<<<< HEAD
+=======
+          "options": {
+            "sslKey": "./ssl/server.key",
+            "sslCert": "./ssl/server.crt",
+            "ssl":true,
+         "browserTarget": "test:build"
+          },
+>>>>>>> 9dab8948417adb7099fcfff67c50022f7bd167f6
           "configurations": {
             "production": {
               "browserTarget": "client:build:production"
@@ -99,4 +113,8 @@
     }
   },
   "defaultProject": "client"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9dab8948417adb7099fcfff67c50022f7bd167f6
