@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using API.Extensions;
 namespace API.Entities
 {
 
@@ -20,11 +18,8 @@ namespace API.Entities
        public string LookingFor { get; set; }
        public string Interests { get; set; }
        public string City { get; set; }
-       public ICollection<Photo> Photos { get; set; }
-       public int GetAge()
-       {
-         return DateTime.CalculateAge();
-       }
+       public string City { get; set; }
+
 
     }
 }
