@@ -14,6 +14,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './_modules/shared.module';
+import { TestErrorsComponent } from './_errors/test-errors/test-errors.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { SharedModule } from './_modules/shared.module';
     HomeComponent,
     RegisterComponent,
     MemberListComponent, 
-    MemberDetailComponent, ListsComponent, MessagesComponent
+    MemberDetailComponent, ListsComponent, MessagesComponent, TestErrorsComponent
   ],
   imports: [
     BrowserModule,
