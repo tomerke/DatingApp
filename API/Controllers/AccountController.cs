@@ -38,7 +38,7 @@ namespace API.Controllers
                 PasswordSalt = hmac.Key
             };
 
-            _context.Name.Add(user);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return new UserDto
             {
@@ -51,7 +51,7 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await _context.Name
+            var user = await _context.Users
             .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
 
             if(user == null) return Unauthorized("Invalid Username");
@@ -73,7 +73,7 @@ namespace API.Controllers
 
         private async Task<bool> UserExists(string userName)
         {
-           return await _context.Name.AnyAsync(x => x.UserName == userName.ToLower() );
+           return await _context.Users.AnyAsync(x => x.UserName == userName.ToLower() );
         }
     }
 }

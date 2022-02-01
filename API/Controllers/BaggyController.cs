@@ -30,7 +30,7 @@ namespace API
         [HttpGet("not-found")]
         public ActionResult<string> GetNotFound()
         {
-            var thing = _context.Name.Find(-1);
+            var thing = _context.Users.Find(-1);
             if (thing == null) return NotFound();
             return Ok(thing);
         }
@@ -40,7 +40,7 @@ namespace API
         [HttpGet("server-error")]
         public ActionResult<string> GetServerError()
         {
-            var thing = _context.Name.Find(-1);
+            var thing = _context.Users.Find(-1);
             var thingToReturn = thing.ToString();
             return thingToReturn;
         }
