@@ -15,7 +15,7 @@ namespace API.Services
         public PhotoService(IOptions<CloudinarySettings> config)
         {
             var acc = new Account(
-              config.Value.CloadName,
+              config.Value.CloudName,
               config.Value.ApiKey,
               config.Value.ApiSecret
             );
