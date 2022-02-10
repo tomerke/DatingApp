@@ -58,7 +58,7 @@ export class PhotoEditorComponent implements OnInit {
       allowedFileType: ['image'],
       removeAfterUpload: true,
       autoUpload: false,
-      maxFileSize: 10 * 1024
+      maxFileSize: 100 * 1024
     });
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
