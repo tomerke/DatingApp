@@ -18,9 +18,9 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
+  model: any = {};
   registerForm: FormGroup;
   maxDate: Date;
-  validationErrors: string[] = [];
 
   constructor(
     private accountService: AccountService,
@@ -65,12 +65,12 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.accountService.register(this.registerForm.value).subscribe(response => {
+    this.accountService.register(this.model).subscribe(response => {
     this.router.navigateByUrl('/members');
       this.cancel();
     }, error => {
-      this.validationErrors = error;
-
+      console.error(error);
+      this.toastr.error(error.error);
     });
   }
 

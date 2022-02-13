@@ -17,7 +17,8 @@
 
   <div class="row mt-5" *ngIf="validationErrors.length > 0">
     <ul class="text-danger">
-      <li *ngFor="let error of validationErrors">{{error}}</li>
+      <li <form (ngSubmit)="onSubmit()" #form="ngForm">
+      </form>></li>
     </ul>
   </div>
 </ng-container>
