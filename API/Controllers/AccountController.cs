@@ -10,6 +10,7 @@ using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using AutoMapper;
+using System;
 
 namespace API.Controllers
 {
@@ -40,7 +41,11 @@ namespace API.Controllers
             user.UserName = registerDto.UserName.ToLower();
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
             user.PasswordSalt = hmac.Key;
-
+            user.Introduction = string.Empty;
+            user.Interests = string.Empty;
+            user.LookingFor =string.Empty;
+            user.LastActive = DateTime.Today;
+            user.Created = DateTime.Today;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
