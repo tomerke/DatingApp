@@ -37,7 +37,7 @@ namespace API.Data
         {
          var query = _context.Users.AsQueryable();
          
-          query = query.Where(u => u.UserName != userParams.CurrentUserName);
+          query = query.Where(u => u.UserName != userParams.CurrentUsername);
           query = query.Where(u => u.Gender == userParams.Gender);
 
           return await PageList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>
@@ -47,7 +47,7 @@ namespace API.Data
         
       
 
-        public async Task<AppUser> GetUserByIdAsync(int id)
+          public async Task<AppUser> GetUserByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);
         }
