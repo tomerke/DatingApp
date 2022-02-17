@@ -13,6 +13,6 @@ namespace API.Helpers
         }
 
         public string CurrentUserName { get; set; } = string.Empty;
-        public string Gender { get; set; } = string.Empty;
+        public string Gender { get; set; }
     }
 }
