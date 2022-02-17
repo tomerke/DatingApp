@@ -6,8 +6,11 @@ namespace API.Helpers
         public int PageNumber { get ; set; } = 1;
         public int _pageSize { get; set; } = 10;
 
-        public string CurrentUsername { get; set; }
-        public string Gender { get; set; }
+        public string CurrentUsername { get; set; } = string.Empty;
+        public string Gender { get; set; } = string.Empty;
+
+        public int MinAge { get; set; } = 18;
+        public int MaxAge { get; set; } = 150;
 
         public int PageSize
         {
