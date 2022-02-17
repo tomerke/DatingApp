@@ -35,19 +35,16 @@ namespace API.Data
 
         public async Task<PageList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
-            var query = _context.Users.AsQueryable();
+         var query = _context.Users.AsQueryable();
 
-            query = query.Where(u => u.UserName != userParams.CurrentUserName);
-            query = query.Where(u => u.Gender == userParams.Gender);
+          query = query.Where(u => u.UserName != userParams.CurrentUserName);
+          query = query.Where(u => u.Gender == userParams.Gender);
 
-            var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
-            var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
+        var minDob = DateTime.Today.AddYears(-userParams.MaxAge -1);
+        var 
 
-            query = query.Where(u => u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob);
-            
-
-            return await PageList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>
-                      (_mapper.ConfigurationProvider).AsNoTracking(), userParams.PageNumber, userParams.PageSize);
+          return await PageList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>
+                    (_mapper.ConfigurationProvider).AsNoTracking(), userParams.PageNumber, userParams.PageSize);
         }
 
 
@@ -60,26 +57,26 @@ namespace API.Data
 
         public async Task<AppUser> GetUserByUserNameAsync(string username)
         {
-            return await _context.Users.
-             Include(p => p.Photos).
-             SingleOrDefaultAsync(x => x.UserName == username);
+           return await _context.Users.
+            Include(p=> p.Photos).
+            SingleOrDefaultAsync(x => x.UserName == username);
         }
 
-        public async Task<IEnumerable<AppUser>> GetUsersAsymc()
+        public async  Task<IEnumerable<AppUser>> GetUsersAsymc()
         {
-            return await _context.Users.
-            Include(p => p.Photos).
-            ToListAsync();
+           return await _context.Users.
+           Include(p=> p.Photos).
+           ToListAsync();
         }
 
-        public async Task<bool> SaveAllAsymc()
+        public  async Task<bool> SaveAllAsymc()
         {
-            return await _context.SaveChangesAsync() > 0;
+           return await _context.SaveChangesAsync() > 0;
         }
 
         public void Update(AppUser user)
         {
-            _context.Entry(user).State = EntityState.Modified;
+         _context.Entry(user).State = EntityState.Modified;
         }
 
     }
