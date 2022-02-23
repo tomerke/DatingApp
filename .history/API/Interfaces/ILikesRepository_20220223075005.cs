@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
-using API.Helpers;
 
 namespace API.Interfaces
 {
@@ -12,6 +11,6 @@ namespace API.Interfaces
     {
         Task<UserLike> GetUserLike(int sourceUserId, int likedUserId);
         Task<AppUser> getUserWithLikes(int userId);
-        Task<PageList<LikeDto>> GetUserLikes(LikesParams likesParams);
+        Task<IEnumerable<LikeDto>> GetUserLikes(string predicate, int userId);
     }
 }
