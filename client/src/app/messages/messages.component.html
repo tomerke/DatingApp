@@ -4,19 +4,14 @@
       class="btn-primary"
       btnRadio="Unread"
       [(ngModel)]="container"
-      (click)="loadMessages()"
-    >
-      <i class="fa fa-envelope"></i>
-      Unread
+      (click)="loadMessages()" >
+      <i class="fa fa-envelope"></i>    Unread
     </button>
-    <button
-      class="btn-primary"
+    <button   class="btn-primary"
       btnRadio="Inbox"
       [(ngModel)]="container"
-      (click)="loadMessages()"
-    >
-      <i class="fa fa-envelope-open"></i>
-      Inbox
+      (click)="loadMessages()"  >
+      <i class="fa fa-envelope-open"></i>    Inbox
     </button>
     <button
       class="btn-primary"
@@ -24,7 +19,7 @@
       [(ngModel)]="container"
       (click)="loadMessages()"
     >
-      <i class="fa fa-envelope-plane"></i>
+      <i class="fa fa-paper-plane"></i>
       Outbox
     </button>
   </div>
@@ -41,10 +36,10 @@
             <th stype="width=40%">Message </th>
             <th stype="width=20%">From / To </th>
             <th stype="width=20%">Sent / Received </th>
-            <th stype="width=20%">Delete </th>
+            <th stype="width=20%"> </th>
         </tr>
         <tr *ngFor="let message of messages"
-         routerLink='{{container === "Outbox" ? "/members/" + message.recipientUsername : "/members/" + message.senderUsername}}' >
+         routerLink='{{container === "Outbox" ? "/members/" + message.recipientUserName : "/members/" + message.senderUserName}}' >
          <td>
             {{message.content}}
          </td>
@@ -52,22 +47,21 @@
             <div *ngIf="container === 'Outbox'">
                 <img
                 class="img-circle rounded-circle mr-2"
-                src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="{{message.recipientUsername}}">
-                <strong>{{message.recipientUsername | titlecase}}</strong>
+                src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="{{message.recipientUserName}}">
+                <strong>{{message.recipientUserName | titlecase}}</strong>
             </div>
             <div *ngIf="container !== 'Outbox'">
                 <img
                 class="img-circle rounded-circle mr-2"
-                src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUsername}}">
-                <strong>{{message.senderUsername | titlecase}}</strong>
+                src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUserName}}">
+                <strong>{{message.senderUserName | titlecase}}</strong>
             </div>
          </td>
          <td>
              {{message.messageSent | timeago}}
          </td>
          <td>
-             <button class="btn btn-danger">
-                 Delete
+             <button class='btn '> Delete
              </button>
          </td>
         </tr>
