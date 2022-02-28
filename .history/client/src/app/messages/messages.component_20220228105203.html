@@ -38,25 +38,24 @@
             <th stype="width=20%">Sent / Received </th>
             <th stype="width=20%"> Delete</th>
         </tr>
-        <tr *ngFor="let message of messages"
+        <!-- <tr *ngFor="let message of messages"
         [hidden]="loading"
          routerLink='{{container === "Outbox" ? "/members/" + message.recipientUserName : "/members/" + message.senderUserName}}'
-         [queryParams]='{tab:3}' >
-
+         [queryParams]='{tab:3}' > -->
          <td>
             {{message.content}}
          </td>
          <td>
             <div *ngIf="container === 'Outbox'">
-                <img
+                <!-- <img
                 class="img-circle rounded-circle mr-2"
-                src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="{{message.recipientUserName}}">
+                src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="{{message.recipientUserName}}"> -->
                 <strong>{{message.recipientUserName | titlecase}}</strong>
             </div>
             <div *ngIf="container !== 'Outbox'">
-                <img
+                <!-- <img
                 class="img-circle rounded-circle mr-2"
-                src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUserName}}">
+                src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="{{message.senderUserName}}"> -->
                 <strong>{{message.senderUserName | titlecase}}</strong>
             </div>
          </td>
@@ -66,7 +65,7 @@
          </td>
          <td>
 
-             <button  type="button"
+             <button class='btn btn-danger' type="button"
              (click) = "$event.stopPropagation()"
              (click)="deleteMessage(message.id)"> Delete
              </button>

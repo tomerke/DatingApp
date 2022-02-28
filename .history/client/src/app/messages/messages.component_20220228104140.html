@@ -31,7 +31,7 @@
 
 
 <div class="row" *ngIf="messages?.length >0">
-    <table class="table table-hover" style="cursor: pointer;">
+    <table class="table " style="cursor: pointer;">
         <tr>
             <th stype="width=40%">Message </th>
             <th stype="width=20%">From / To </th>
@@ -42,7 +42,6 @@
         [hidden]="loading"
          routerLink='{{container === "Outbox" ? "/members/" + message.recipientUserName : "/members/" + message.senderUserName}}'
          [queryParams]='{tab:3}' >
-
          <td>
             {{message.content}}
          </td>
@@ -66,7 +65,7 @@
          </td>
          <td>
 
-             <button  type="button"
+             <button class='btn btn-danger' type="button"
              (click) = "$event.stopPropagation()"
              (click)="deleteMessage(message.id)"> Delete
              </button>

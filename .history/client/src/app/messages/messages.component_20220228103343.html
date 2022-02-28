@@ -42,7 +42,6 @@
         [hidden]="loading"
          routerLink='{{container === "Outbox" ? "/members/" + message.recipientUserName : "/members/" + message.senderUserName}}'
          [queryParams]='{tab:3}' >
-
          <td>
             {{message.content}}
          </td>
@@ -65,11 +64,11 @@
 
          </td>
          <td>
-
-             <button  type="button"
+       
+             <!-- <button class='btn btn-danger' type="button"
              (click) = "$event.stopPropagation()"
              (click)="deleteMessage(message.id)"> Delete
-             </button>
+             </button> -->
          </td>
         </tr>
     </table>

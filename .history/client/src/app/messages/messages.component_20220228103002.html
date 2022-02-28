@@ -36,13 +36,12 @@
             <th stype="width=40%">Message </th>
             <th stype="width=20%">From / To </th>
             <th stype="width=20%">Sent / Received </th>
-            <th stype="width=20%"> Delete</th>
+            <th stype="width=20%"> </th>
         </tr>
         <tr *ngFor="let message of messages"
         [hidden]="loading"
          routerLink='{{container === "Outbox" ? "/members/" + message.recipientUserName : "/members/" + message.senderUserName}}'
          [queryParams]='{tab:3}' >
-
          <td>
             {{message.content}}
          </td>
@@ -66,10 +65,13 @@
          </td>
          <td>
 
-             <button  type="button"
+          <button type="button" class="btn btn-danger"
+          (click) = "$event.stopPropagation()"
+          (click)="deleteMessage(message.id)"></button>
+             <!-- <button class='btn btn-danger' type="button"
              (click) = "$event.stopPropagation()"
              (click)="deleteMessage(message.id)"> Delete
-             </button>
+             </button> -->
          </td>
         </tr>
     </table>
