@@ -36,11 +36,11 @@ namespace API.Controllers
             }
 
             var user = _mapper.Map<AppUser>(registerDto);
-            // using var hmac = new HMACSHA512();
+            using var hmac = new HMACSHA512();
 
             user.UserName = registerDto.UserName.ToLower();
-            // user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
-            // user.PasswordSalt = hmac.Key;
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+            user.PasswordSalt = hmac.Key;
             user.Introduction = string.Empty;
             user.Interests = string.Empty;
             user.LookingFor = string.Empty;
@@ -68,13 +68,13 @@ namespace API.Controllers
 
             if (user == null) return Unauthorized("Invalid Username");
 
-            // using var hmac = new HMACSHA512(user.PasswordSalt);
-            // var comuptedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var comuptedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
-            // for (int i = 0; i < comuptedHash.Length; i++)
-            // {
-            //     if (comuptedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password");
-            // }
+            for (int i = 0; i < comuptedHash.Length; i++)
+            {
+                if (comuptedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password");
+            }
 
             return new UserDto
             {

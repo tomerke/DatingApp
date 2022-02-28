@@ -27,11 +27,10 @@ namespace API.Data
          .WithOne(u=> u.User)
          .HasForeignKey(ur => ur.UserId)
          .IsRequired();
-
-          builder.Entity<AppRole>()
+          builder.Entity<AppUser>()
          .HasMany(ur => ur.UserRoles)
-         .WithOne(u=> u.Role)
-         .HasForeignKey(ur => ur.RoleId)
+         .WithOne(u=> u.User)
+         .HasForeignKey(ur => ur.UserId)
          .IsRequired();
 
 

@@ -69,12 +69,12 @@ namespace API.Controllers
             if (user == null) return Unauthorized("Invalid Username");
 
             // using var hmac = new HMACSHA512(user.PasswordSalt);
-            // var comuptedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            var comuptedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
-            // for (int i = 0; i < comuptedHash.Length; i++)
-            // {
-            //     if (comuptedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password");
-            // }
+            for (int i = 0; i < comuptedHash.Length; i++)
+            {
+                if (comuptedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password");
+            }
 
             return new UserDto
             {
