@@ -4,7 +4,7 @@ using System;
 namespace API.Entities
 {
 
-    public class AppUser 
+    public class AppUser
     {
       public int Id { get; set; }
 
@@ -27,7 +27,7 @@ namespace API.Entities
        public ICollection<UserLike> LikedUsers { get; set; }
        public ICollection<Message> MessageSent { get; set; }
        public ICollection<Message> MessageReceived { get; set; }
-
+    
 
     }
 }
