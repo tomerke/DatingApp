@@ -42,8 +42,15 @@ export class MessagesComponent implements OnInit {
   }
 
   deleteMessage(messageId: number){
-    this.messageService.deleteMessage(messageId).subscribe(()=>{
-      this.messages.splice(this.messages.findIndex(d => d.id === messageId), 1);
-    });
+    this.import { Injectable } from '@angular/core';
+    import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+    import { Observable } from 'rxjs';
+
+    @Injectable()
+    export class YourInterceptor implements HttpInterceptor {
+      intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return next.handle(req);
+      }
+    }
   }
 }

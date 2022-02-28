@@ -55,10 +55,7 @@ namespace API.Data
 
         public async Task<Message> GetMessage(int id)
         {
-            return await _context.Messages
-            .Include(u => u.Sender)
-            .Include(u=> u.Recipient)
-            .SingleOrDefaultAsync(x => x.Id == id);
+            return await _context.Messages.;
         }
 
         public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUserName, string recipientUserName)

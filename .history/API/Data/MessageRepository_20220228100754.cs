@@ -56,8 +56,7 @@ namespace API.Data
         public async Task<Message> GetMessage(int id)
         {
             return await _context.Messages
-            .Include(u => u.Sender)
-            .Include(u=> u.Recipient)
+            .Include
             .SingleOrDefaultAsync(x => x.Id == id);
         }
 

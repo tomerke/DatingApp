@@ -57,7 +57,7 @@ namespace API.Data
         {
             return await _context.Messages
             .Include(u => u.Sender)
-            .Include(u=> u.Recipient)
+            In
             .SingleOrDefaultAsync(x => x.Id == id);
         }
 
