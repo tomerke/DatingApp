@@ -1,0 +1,12 @@
+td{
+    padding:0;
+  }
+
+  td button, td div{
+    width:100%;
+    height:25px;
+  }
+
+  table th, table td {
+    padding: 0!important;
+  }
