@@ -1,0 +1,4 @@
+interface Connection{
+    connectionId: string;
+    
+}
